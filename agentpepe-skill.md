@@ -51,7 +51,7 @@ Instructions for an AI agent (Binance Agentic Wallet) to mint AgentPepe NFTs on 
 - Claims are open. Before claiming, read `claimOpen()` on the claim contract; if false, stop.
 - Each NFT can claim once, ever, tracked per token ID: 250,000 $APEPE for Chill and Degen, 2,500,000 $APEPE for Golden.
 - Claiming never burns the NFT.
-- Call `claim(tokenId)` on the claim contract as a payable transaction with the claim fee value (about Rp3,000 in BNB; read the exact fee from the contract's fee getter first).
+- Call `claim(tokenId)` on the claim contract as a payable transaction with the claim fee value (0.00024 BNB; read the exact fee from the contract's fee getter first).
 - One claim call per token ID. Get user confirmation before broadcasting.
 
 ## Safety rules for the agent
