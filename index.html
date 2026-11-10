@@ -9,17 +9,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=1">
+<link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
+
+<canvas id="fx-canvas" aria-hidden="true"></canvas>
 
 <header class="topbar">
   <a class="brand" href="#top">AGENT<span>PEPE</span></a>
   <nav class="nav">
-    <a href="#how">Mint</a>
-    <a href="#classes">Classes</a>
-    <a href="#prices">Prices</a>
-    <a href="#token">Token</a>
+    <a href="#mint">Mint</a>
+    <a href="#claim">Claim</a>
+    <a href="#facts">Facts</a>
     <a href="#faq">FAQ</a>
   </nav>
   <span class="pill pill-soon">Mint is live</span>
@@ -29,6 +30,8 @@
 
   <!-- HERO -->
   <section class="hero">
+    <img class="sticker sticker-degen" src="img/frog-degen.jpg" alt="" aria-hidden="true">
+    <img class="sticker sticker-golden" src="img/frog-golden.jpg" alt="" aria-hidden="true">
     <div class="hero-text">
       <p class="kicker">A meme collection for Binance agents</p>
       <h1 class="wordmark">AGENT<span>PEPE</span></h1>
@@ -60,9 +63,17 @@
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="section" id="how">
-    <p class="kicker">How it works</p>
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-set">FIRST MINT FREE ✦ GOLDEN ±3% ✦ CLAIM OPEN ✦ 250,000 $APEPE PER FROG ✦ MINT VIA YOUR AGENT ✦ 6,666 FROGS ✦ NO WEBSITE BUTTON ✦ EVERY 500 MINTS A SNAPSHOT ✦&nbsp;</span>
+      <span class="ticker-set">FIRST MINT FREE ✦ GOLDEN ±3% ✦ CLAIM OPEN ✦ 250,000 $APEPE PER FROG ✦ MINT VIA YOUR AGENT ✦ 6,666 FROGS ✦ NO WEBSITE BUTTON ✦ EVERY 500 MINTS A SNAPSHOT ✦&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- MINT -->
+  <section class="section" id="mint">
+    <p class="kicker">Mint</p>
     <h2>Mint through your agent, not a website button</h2>
     <div class="steps">
       <div class="step">
@@ -90,62 +101,6 @@
     </div>
   </section>
 
-  <!-- CLASSES -->
-  <section class="section" id="classes">
-    <p class="kicker">Classes</p>
-    <h2>Three kinds of frog luck</h2>
-    <p class="section-sub">Class is locked in by the on-chain seed at mint and revealed 24 hours later. Percentages are approximate, decided by the seed, not by us.</p>
-    <div class="cards">
-      <article class="card">
-        <img src="img/frog-hero.jpg" alt="Chill Pepe frog agent">
-        <div class="card-body">
-          <h3>Chill Pepe</h3>
-          <p class="card-pct">±70% of supply</p>
-          <p>Suit on, headset on, zero stress. Backbone of the pond and proud of it.</p>
-          <p class="card-claim">Claim: <strong>250,000 $APEPE</strong></p>
-        </div>
-      </article>
-      <article class="card">
-        <img src="img/frog-degen.jpg" alt="Degen Pepe with shades and gold chain">
-        <div class="card-body">
-          <h3>Degen Pepe</h3>
-          <p class="card-pct">±27% of supply</p>
-          <p>Shades down, chain out, portfolio up 420.69%. Trades first, sleeps later.</p>
-          <p class="card-claim">Claim: <strong>250,000 $APEPE</strong></p>
-        </div>
-      </article>
-      <article class="card card-golden">
-        <img src="img/frog-golden.jpg" alt="Golden Pepe with a crown">
-        <div class="card-body">
-          <h3>Golden Pepe</h3>
-          <p class="card-pct">±3% of supply</p>
-          <p>Solid gold, crown included. Rarest frog in the pond and it knows it.</p>
-          <p class="card-claim">Claim: <strong>2,500,000 $APEPE</strong> (10x)</p>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- PRICES -->
-  <section class="section" id="prices">
-    <p class="kicker">Tiered pricing</p>
-    <h2>First one is free. Greed costs extra.</h2>
-    <div class="table-wrap">
-      <table class="prices">
-        <thead>
-          <tr><th>Mint number in your wallet</th><th>Price</th></tr>
-        </thead>
-        <tbody>
-          <tr class="row-free"><td>1st mint</td><td>FREE</td></tr>
-          <tr><td>2nd to 5th mint</td><td>0.0002 BNB each</td></tr>
-          <tr><td>6th to 10th mint</td><td>0.0004 BNB each</td></tr>
-          <tr><td>11th to 20th mint</td><td>0.0008 BNB each</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="section-sub">Maximum 20 AgentPepe per wallet. Prices are charged in BNB by the mint contract. A small platform commission may apply inside your agent confirmation screen.</p>
-  </section>
-
   <!-- CLAIM -->
   <section class="section" id="claim">
     <p class="kicker">Claim $APEPE</p>
@@ -166,17 +121,43 @@
     </div>
   </section>
 
-  <!-- TOKEN -->
-  <section class="section" id="token">
-    <p class="kicker">Token</p>
-    <h2>$APEPE rewards every frog</h2>
-    <div class="facts">
-      <div class="fact"><span class="fact-num">10,000,000,000</span><span class="fact-label">Total $APEPE supply</span></div>
-      <div class="fact"><span class="fact-num">250,000</span><span class="fact-label">$APEPE per NFT claim</span></div>
-      <div class="fact"><span class="fact-num">2,500,000</span><span class="fact-label">Golden Pepe claim (10x)</span></div>
-      <div class="fact"><span class="fact-num">1x</span><span class="fact-label">Claim per NFT, ever</span></div>
+  <!-- FACTS STRIP -->
+  <section class="section" id="facts">
+    <p class="kicker">Pond facts</p>
+    <h2>Classes, prices, token. One strip.</h2>
+    <div class="strip-card">
+      <div class="strip-group">
+        <h3>Classes, set by the seed</h3>
+        <table class="mini-table">
+          <tbody>
+            <tr><td>Chill Pepe</td><td>±70%</td><td>claims 250,000 $APEPE</td></tr>
+            <tr><td>Degen Pepe</td><td>±27%</td><td>claims 250,000 $APEPE</td></tr>
+            <tr class="row-gold"><td>Golden Pepe</td><td>±3%</td><td>claims 2,500,000 $APEPE</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="strip-group">
+        <h3>Mint prices per wallet</h3>
+        <table class="mini-table">
+          <tbody>
+            <tr class="row-free"><td>1st mint</td><td></td><td>FREE</td></tr>
+            <tr><td>2nd to 5th</td><td></td><td>0.0002 BNB</td></tr>
+            <tr><td>6th to 10th</td><td></td><td>0.0004 BNB</td></tr>
+            <tr><td>11th to 20th</td><td></td><td>0.0008 BNB</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="strip-group">
+        <h3>$APEPE token</h3>
+        <div class="mini-chips">
+          <span class="chip">Supply 10,000,000,000</span>
+          <span class="chip chip-yellow">1 claim per NFT, ever</span>
+          <span class="chip chip-gold">Claim fee 0.00024 BNB</span>
+          <span class="chip">NFT never burned</span>
+        </div>
+        <p class="strip-note">Class is locked in by the on-chain seed at mint and revealed 24 hours later. Maximum 20 AgentPepe per wallet. Prices are charged in BNB by the mint contract.</p>
+      </div>
     </div>
-    <p class="section-sub">Every minted AgentPepe can claim $APEPE once per token ID. Your NFT is never burned by claiming, it stays in your wallet. A flat claim fee of 0.00024 BNB applies per claim. Claims are open now, for every minted AgentPepe.</p>
   </section>
 
   <!-- FAQ -->
@@ -221,5 +202,6 @@
 </footer>
 
 <script src="js/app.js?v=4"></script>
+<script src="js/fx.js?v=1"></script>
 </body>
 </html>
