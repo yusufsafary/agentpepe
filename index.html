@@ -146,6 +146,26 @@
     <p class="section-sub">Maximum 20 AgentPepe per wallet. Prices are charged in BNB by the mint contract. A small platform commission may apply inside your agent confirmation screen.</p>
   </section>
 
+  <!-- CLAIM -->
+  <section class="section" id="claim">
+    <p class="kicker">Claim $APEPE</p>
+    <h2>Every frog carries tokens</h2>
+    <div class="facts">
+      <div class="fact"><span class="fact-num">250,000</span><span class="fact-label">$APEPE per NFT claim</span></div>
+      <div class="fact"><span class="fact-num">2,500,000</span><span class="fact-label">Golden Pepe claim (10x)</span></div>
+      <div class="fact"><span class="fact-num" id="cl-claimed">0</span><span class="fact-label">Claims settled so far</span></div>
+      <div class="fact"><span class="fact-num" id="cl-status">OPEN</span><span class="fact-label">Claim status</span></div>
+    </div>
+    <p class="section-sub">Claims are open. Every minted AgentPepe claims once per token ID, and your frog is never burned, it stays in your wallet. A flat claim fee of about Rp3,000 in BNB applies per claim, shown by your agent before you confirm.</p>
+    <div class="prompt-box">
+      <div class="prompt-head">
+        <span>Copy this to your agent to claim</span>
+        <button id="copy-btn-claim" type="button">Copy</button>
+      </div>
+      <pre id="claim-prompt">Read https://agentpepe.fun/agentpepe-skill.md and follow its claim section to claim $APEPE for my AgentPepe token ID (replace this with my token number) on BNB Chain. Show me the exact fee first and wait for my confirmation before you claim.</pre>
+    </div>
+  </section>
+
   <!-- TOKEN -->
   <section class="section" id="token">
     <p class="kicker">Token</p>
@@ -200,6 +220,6 @@
   <p class="footer-site">agentpepe.fun</p>
 </footer>
 
-<script src="js/app.js?v=3"></script>
+<script src="js/app.js?v=4"></script>
 </body>
 </html>

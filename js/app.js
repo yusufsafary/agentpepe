@@ -58,6 +58,14 @@
     }
   }
 
+  var cbtn2 = $("copy-btn-claim");
+  if (cbtn2) cbtn2.addEventListener("click", function () {
+    var t = $("claim-prompt").textContent;
+    if (navigator.clipboard) navigator.clipboard.writeText(t);
+    cbtn2.textContent = "Copied";
+    setTimeout(function () { cbtn2.textContent = "Copy"; }, 1600);
+  });
+
   var cbtn = $("copy-btn");
   if (cbtn) cbtn.addEventListener("click", function () {
     var t = $("agent-prompt").textContent;
@@ -66,7 +74,29 @@
     setTimeout(function () { cbtn.textContent = "Copy"; }, 1600);
   });
 
+
+  async function readClaim() {
+    if (!CONFIG.CLAIM) return;
+    var calls = [
+      { jsonrpc: "2.0", id: 1, method: "eth_call", params: [{ to: CONFIG.CLAIM, data: "0xd54ad2a1" }, "latest"] },
+      { jsonrpc: "2.0", id: 2, method: "eth_call", params: [{ to: CONFIG.CLAIM, data: "0x4b8bcb58" }, "latest"] }
+    ];
+    for (var i = 0; i < CONFIG.RPCS.length; i++) {
+      try {
+        var r = await fetch(CONFIG.RPCS[i], { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(calls) });
+        var j = await r.json();
+        if (!j || !Array.isArray(j)) continue;
+        var cRes = j.find(function (x) { return x.id === 1; });
+        var oRes = j.find(function (x) { return x.id === 2; });
+        if (cRes && cRes.result && $("cl-claimed")) $("cl-claimed").textContent = parseInt(cRes.result, 16).toLocaleString("en-US");
+        if (oRes && oRes.result && $("cl-status")) $("cl-status").textContent = parseInt(oRes.result, 16) === 1 ? "OPEN" : "CLOSED";
+        return;
+      } catch (e) {}
+    }
+  }
   fillContracts();
   readMinted();
+  readClaim();
   setInterval(readMinted, 30000);
+  setInterval(readClaim, 30000);
 })();
