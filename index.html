@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AGENTPEPE · Every Agent Deserves a Pepe</title>
+<meta name="description" content="AGENTPEPE is a meme NFT collection of 6,666 glossy 3D frog agents on BNB Chain, minted only through Binance Agentic Wallet agents. First mint per wallet is free.">
+<link rel="icon" href="img/frog-golden.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=1">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#top">AGENT<span>PEPE</span></a>
+  <nav class="nav">
+    <a href="#how">Mint</a>
+    <a href="#classes">Classes</a>
+    <a href="#prices">Prices</a>
+    <a href="#token">Token</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <span class="pill pill-soon">Mint opens soon</span>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="kicker">A meme collection for Binance agents</p>
+      <h1 class="wordmark">AGENT<span>PEPE</span></h1>
+      <p class="tagline">Every agent deserves a Pepe. 6,666 glossy 3D frog agents, generated from on-chain seeds and minted only through your Binance agent. Your first one is free.</p>
+      <div class="chips">
+        <span class="chip">6,666 supply</span>
+        <span class="chip chip-yellow">First mint free</span>
+        <span class="chip chip-gold">Golden 3%</span>
+      </div>
+      <div class="board" id="board">
+        <div class="board-cell">
+          <span class="board-num" id="b-minted">0</span>
+          <span class="board-label">Minted</span>
+        </div>
+        <div class="board-cell">
+          <span class="board-num" id="b-left">6,666</span>
+          <span class="board-label">Remaining</span>
+        </div>
+        <div class="board-cell">
+          <span class="board-num board-status" id="b-status">SOON</span>
+          <span class="board-label">Mint status</span>
+        </div>
+      </div>
+      <p class="board-note" id="b-note">Mint is not open yet. Contracts are being deployed. Watch this page and get your agent ready.</p>
+    </div>
+    <div class="hero-frog">
+      <img src="img/frog-hero.jpg" alt="Agent Pepe, a glossy 3D frog in a suit with a headset">
+      <span class="frog-badge">Agent Nº 001 reporting for duty</span>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how">
+    <p class="kicker">How it works</p>
+    <h2>Mint through your agent, not a website button</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">1</span>
+        <h3>Hold a Binance Agent ID</h3>
+        <p>AgentPepe mints are gated. Your wallet must hold a Binance Agent ID (SPACE ID Agent ID NFT) to mint, free or paid.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">2</span>
+        <h3>Tell your agent to mint</h3>
+        <p>Send your Binance Agentic Wallet agent the prompt below. It reads the skill file, answers the gate question and mints for you.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">3</span>
+        <h3>Reveal in 24 hours</h3>
+        <p>Every Pepe hides its class until 24 hours after mint. Chill, Degen or the 3% Golden. No peeking, no sniping rares.</p>
+      </div>
+    </div>
+    <div class="prompt-box">
+      <div class="prompt-head">
+        <span>Copy this to your agent</span>
+        <button id="copy-btn" type="button">Copy</button>
+      </div>
+      <pre id="agent-prompt">Read https://agentpepe.fun/agentpepe-skill.md and follow it to mint AgentPepe NFTs for my wallet on BNB Chain. Mint my first AgentPepe free, then ask me before any paid mint.</pre>
+    </div>
+  </section>
+
+  <!-- CLASSES -->
+  <section class="section" id="classes">
+    <p class="kicker">Classes</p>
+    <h2>Three kinds of frog luck</h2>
+    <p class="section-sub">Class is locked in by the on-chain seed at mint and revealed 24 hours later. Percentages are approximate, decided by the seed, not by us.</p>
+    <div class="cards">
+      <article class="card">
+        <img src="img/frog-hero.jpg" alt="Chill Pepe frog agent">
+        <div class="card-body">
+          <h3>Chill Pepe</h3>
+          <p class="card-pct">±70% of supply</p>
+          <p>Suit on, headset on, zero stress. Backbone of the pond and proud of it.</p>
+          <p class="card-claim">Claim: <strong>250,000 $APEPE</strong></p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="img/frog-degen.jpg" alt="Degen Pepe with shades and gold chain">
+        <div class="card-body">
+          <h3>Degen Pepe</h3>
+          <p class="card-pct">±27% of supply</p>
+          <p>Shades down, chain out, portfolio up 420.69%. Trades first, sleeps later.</p>
+          <p class="card-claim">Claim: <strong>250,000 $APEPE</strong></p>
+        </div>
+      </article>
+      <article class="card card-golden">
+        <img src="img/frog-golden.jpg" alt="Golden Pepe with a crown">
+        <div class="card-body">
+          <h3>Golden Pepe</h3>
+          <p class="card-pct">±3% of supply</p>
+          <p>Solid gold, crown included. Rarest frog in the pond and it knows it.</p>
+          <p class="card-claim">Claim: <strong>2,500,000 $APEPE</strong> (10x)</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- PRICES -->
+  <section class="section" id="prices">
+    <p class="kicker">Tiered pricing</p>
+    <h2>First one is free. Greed costs extra.</h2>
+    <div class="table-wrap">
+      <table class="prices">
+        <thead>
+          <tr><th>Mint number in your wallet</th><th>Price</th></tr>
+        </thead>
+        <tbody>
+          <tr class="row-free"><td>1st mint</td><td>FREE</td></tr>
+          <tr><td>2nd to 5th mint</td><td>0.0002 BNB each</td></tr>
+          <tr><td>6th to 10th mint</td><td>0.0004 BNB each</td></tr>
+          <tr><td>11th to 20th mint</td><td>0.0008 BNB each</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="section-sub">Maximum 20 AgentPepe per wallet. Prices are charged in BNB by the mint contract. A small platform commission may apply inside your agent confirmation screen.</p>
+  </section>
+
+  <!-- TOKEN -->
+  <section class="section" id="token">
+    <p class="kicker">Token</p>
+    <h2>$APEPE rewards every frog</h2>
+    <div class="facts">
+      <div class="fact"><span class="fact-num">10,000,000,000</span><span class="fact-label">Total $APEPE supply</span></div>
+      <div class="fact"><span class="fact-num">250,000</span><span class="fact-label">$APEPE per NFT claim</span></div>
+      <div class="fact"><span class="fact-num">2,500,000</span><span class="fact-label">Golden Pepe claim (10x)</span></div>
+      <div class="fact"><span class="fact-num">1x</span><span class="fact-label">Claim per NFT, ever</span></div>
+    </div>
+    <p class="section-sub">After the mint phase, every AgentPepe can claim $APEPE once per token ID. Your NFT is never burned by claiming, it stays in your wallet. A flat claim fee of about Rp3,000 in BNB applies per claim. Claims open after the mint phase ends, announced here and in the skill file.</p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <p class="kicker">FAQ</p>
+    <h2>Questions from the pond</h2>
+    <div class="faq">
+      <details>
+        <summary>When does minting open?</summary>
+        <p>Soon. Contracts are being deployed and this page will flip to a live counter the moment mint opens. Nothing can be minted before the official opening, so any early link is fake.</p>
+      </details>
+      <details>
+        <summary>Why can I only mint through an agent?</summary>
+        <p>AgentPepe is built for Binance Agentic Wallet users. Minting runs through your agent, which checks your Agent ID, answers the gate question and signs the mint. This site never asks you to connect a wallet.</p>
+      </details>
+      <details>
+        <summary>How does the free mint work?</summary>
+        <p>Your first AgentPepe in each wallet costs 0 BNB in mint price. Your agent still needs a tiny amount of BNB for network gas, and a small commission can appear in the agent confirmation screen.</p>
+      </details>
+      <details>
+        <summary>How do I know if I got a Golden Pepe?</summary>
+        <p>Wait 24 hours after your mint. Classes come from the on-chain seed, roughly 70% Chill, 27% Degen and 3% Golden, and the reveal is automatic.</p>
+      </details>
+      <details>
+        <summary>When can I claim $APEPE?</summary>
+        <p>Claims open after the mint phase. Each NFT claims once: 250,000 $APEPE, or 2,500,000 for a Golden Pepe, for a small fee of about Rp3,000 in BNB. Claiming never burns your NFT.</p>
+      </details>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p class="footer-brand">AGENT<span>PEPE</span></p>
+  <p>Meme project on BNB Chain. Mint through your Binance agent only.</p>
+  <div class="contracts">
+    <p>AgentPepe NFT: <code id="c-nft">TO BE ANNOUNCED</code></p>
+    <p>$APEPE token: <code id="c-token">TO BE ANNOUNCED</code></p>
+    <p>Claim contract: <code id="c-claim">TO BE ANNOUNCED</code></p>
+  </div>
+  <p class="footer-site">agentpepe.fun</p>
+</footer>
+
+<script src="js/app.js?v=1"></script>
+</body>
+</html>
