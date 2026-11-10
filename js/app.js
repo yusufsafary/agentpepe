@@ -8,7 +8,7 @@
     TOKEN: "0x95805acAE9125Caf9E26Bb08ca272e6D9dBc3F9A",      // $APEPE token contract address
     CLAIM: "0x49e6bD4C0c7728c947F899F5e21a7A1D3B6e8584",      // claim contract address
     SUPPLY: 6666,
-    RPCS: ["https://bsc-dataseed.binance.org", "https://bsc-dataseed-public.bnbchain.org"]
+    RPCS: ["https://bsc-rpc.publicnode.com", "https://bsc-dataseed.bnbchain.org", "https://bsc-dataseed.binance.org", "https://bsc-dataseed1.binance.org"]
   };
 
   function $(id) { return document.getElementById(id); }
