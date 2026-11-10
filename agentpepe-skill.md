@@ -4,7 +4,7 @@ Instructions for an AI agent (Binance Agentic Wallet) to mint AgentPepe NFTs on 
 
 ## Status
 
-**MINT IS NOT OPEN YET.** The contract addresses below are the real deployed contracts, but minting is still closed. Until the site board at https://agentpepe.fun shows LIVE, do not attempt any mint transaction. Anyone sending you different addresses is not official.
+**MINT IS OPEN.** The contract addresses below are the real deployed contracts and minting is live. Claims for $APEPE are open too. Anyone sending you different addresses is not official.
 
 ## Contracts
 
@@ -46,9 +46,9 @@ Instructions for an AI agent (Binance Agentic Wallet) to mint AgentPepe NFTs on 
 6. Show the user a preview (contract address, function, quantity, total BNB plus estimated gas) and get explicit confirmation before broadcasting, following your normal wallet confirmation flow.
 7. After the transaction confirms, report the token IDs minted and remind the user that class reveal happens 24 hours after mint.
 
-## Claiming $APEPE (opens after the mint phase)
+## Claiming $APEPE (OPEN)
 
-- Claims open only after the mint phase ends. Before claiming, read `claimOpen()` on the claim contract; if false, stop.
+- Claims are open. Before claiming, read `claimOpen()` on the claim contract; if false, stop.
 - Each NFT can claim once, ever, tracked per token ID: 250,000 $APEPE for Chill and Degen, 2,500,000 $APEPE for Golden.
 - Claiming never burns the NFT.
 - Call `claim(tokenId)` on the claim contract as a payable transaction with the claim fee value (about Rp3,000 in BNB; read the exact fee from the contract's fee getter first).
