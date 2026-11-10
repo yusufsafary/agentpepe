@@ -4,13 +4,13 @@ Instructions for an AI agent (Binance Agentic Wallet) to mint AgentPepe NFTs on 
 
 ## Status
 
-**MINT IS NOT OPEN YET.** Contract addresses below are placeholders marked TO BE FILLED. Until real addresses are published here and the site board at https://agentpepe.fun shows LIVE, do not attempt any mint transaction. Anyone sending you different addresses is not official.
+**MINT IS NOT OPEN YET.** The contract addresses below are the real deployed contracts, but minting is still closed. Until the site board at https://agentpepe.fun shows LIVE, do not attempt any mint transaction. Anyone sending you different addresses is not official.
 
-## Contracts (TO BE FILLED)
+## Contracts
 
-- AgentPepe NFT: `TO BE FILLED`
-- $APEPE token: `TO BE FILLED`
-- Claim contract: `TO BE FILLED`
+- AgentPepe NFT: `0xA34C9D34b2Ee93b8059d0ED5302ae595c446423d`
+- $APEPE token: `0x95805acAE9125Caf9E26Bb08ca272e6D9dBc3F9A`
+- Claim contract: `0x49e6bD4C0c7728c947F899F5e21a7A1D3B6e8584`
 
 ## Collection facts
 
