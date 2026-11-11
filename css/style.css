@@ -409,3 +409,25 @@ html { scroll-padding-top: 84px; }
 /* v3.2: golden sticker moves over the frog photo, never over text */
 .sticker { pointer-events: none; }
 .sticker-golden { left: auto; right: 6px; bottom: 96px; }
+
+/* v3.3: pool band + swap page */
+.pool-band { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 880px; margin: 26px auto 0; }
+.pool-card { display: flex; align-items: center; gap: 16px; background: var(--white); border: 3px solid var(--ink); border-radius: 20px; padding: 18px 20px; box-shadow: 6px 6px 0 var(--ink); text-decoration: none; transition: transform .18s ease, box-shadow .18s ease; }
+.pool-card:hover { transform: translate(-2px, -2px); box-shadow: 9px 9px 0 var(--ink); }
+.pool-logo { width: 64px; height: 64px; border-radius: 16px; background: #ffffff; border: 2.5px solid var(--ink); display: flex; align-items: center; justify-content: center; overflow: hidden; flex: none; }
+.pool-logo img { width: 52px; height: 52px; object-fit: contain; }
+.pool-meta b { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 24px; line-height: 1.1; display: block; color: var(--ink); }
+.pool-meta i { font-style: normal; font-weight: 900; font-size: 12.5px; letter-spacing: 2px; text-transform: uppercase; color: #a86e00; }
+.pool-arrow { margin-left: auto; font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 28px; color: var(--ink); }
+@media (max-width: 640px) { .pool-band { grid-template-columns: 1fr; } }
+.swap-note { background: #ffe98a; border: 3px solid var(--ink); border-radius: 20px; box-shadow: 6px 6px 0 var(--ink); padding: 20px 22px; margin: 22px 0 26px; }
+.swap-note b { font-family: "Baloo 2", sans-serif; font-size: 22px; display: block; margin-bottom: 4px; }
+.dex-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 0 0 26px; }
+.dex-card { background: var(--white); border: 3px solid var(--ink); border-radius: 22px; box-shadow: 6px 6px 0 var(--ink); padding: 26px 22px; text-align: center; }
+.dex-logo { width: 96px; height: 96px; margin: 0 auto 12px; border-radius: 22px; background: #ffffff; border: 2.5px solid var(--ink); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.dex-logo img { width: 80px; height: 80px; object-fit: contain; }
+.dex-card h3 { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 28px; margin: 0 0 2px; }
+.dex-card p { margin: 0 0 16px; font-weight: 700; opacity: .75; }
+.dex-btn { display: inline-block; background: var(--green); color: var(--ink); font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 19px; padding: 12px 22px; border: 3px solid var(--ink); border-radius: 999px; box-shadow: 4px 4px 0 var(--ink); text-decoration: none; transition: transform .15s ease, box-shadow .15s ease; }
+.dex-btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+@media (max-width: 640px) { .dex-grid { grid-template-columns: 1fr; } }
