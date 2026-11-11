@@ -47,9 +47,9 @@
   }
 
   function fillContracts() {
-    if (CONFIG.NFT) $("c-nft").textContent = CONFIG.NFT;
-    if (CONFIG.TOKEN) $("c-token").textContent = CONFIG.TOKEN;
-    if (CONFIG.CLAIM) $("c-claim").textContent = CONFIG.CLAIM;
+    if (CONFIG.NFT && $("c-nft")) $("c-nft").textContent = CONFIG.NFT;
+    if (CONFIG.TOKEN && $("c-token")) $("c-token").textContent = CONFIG.TOKEN;
+    if (CONFIG.CLAIM && $("c-claim")) $("c-claim").textContent = CONFIG.CLAIM;
   }
 
   function raceCalls(calls, onOk, onFail) {
