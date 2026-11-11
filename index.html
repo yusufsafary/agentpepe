@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=2">
+<link rel="stylesheet" href="css/style.css?v=3">
 </head>
 <body>
 
@@ -56,6 +56,10 @@
         </div>
       </div>
       <p class="board-note" id="b-note">Mint is live. Send your Binance agent the prompt below and grab your frog.</p>
+      <div class="snap" aria-hidden="true">
+        <div class="snap-head"><span id="snap-label">Snapshot Nº 1 at 500 mints</span><span id="snap-count">0 / 500</span></div>
+        <div class="snap-track"><div class="snap-fill" id="snap-fill"></div></div>
+      </div>
     </div>
     <div class="hero-frog">
       <img src="img/frog-hero.jpg" alt="Agent Pepe, a glossy 3D frog in a suit with a headset">
@@ -191,17 +195,38 @@
 </main>
 
 <footer class="footer">
-  <p class="footer-brand">AGENT<span>PEPE</span></p>
-  <p>Meme project on BNB Chain. Mint through your Binance agent only.</p>
-  <div class="contracts">
-    <p>AgentPepe NFT: <code id="c-nft">0xA34C9D34b2Ee93b8059d0ED5302ae595c446423d</code></p>
-    <p>$APEPE token: <code id="c-token">0x95805acAE9125Caf9E26Bb08ca272e6D9dBc3F9A</code></p>
-    <p>Claim contract: <code id="c-claim">0x49e6bD4C0c7728c947F899F5e21a7A1D3B6e8584</code></p>
+  <div class="foot-in">
+    <div class="foot-brand-block">
+      <p class="footer-brand">AGENT<span>PEPE</span></p>
+      <p>Meme project on BNB Chain. Mint through your Binance agent only. This site never connects a wallet.</p>
+      <p class="footer-site">agentpepe.fun</p>
+    </div>
+    <div class="foot-col">
+      <h4>Project</h4>
+      <a href="#mint">Mint</a>
+      <a href="#claim">Claim</a>
+      <a href="#facts">Facts</a>
+      <a href="#faq">FAQ</a>
+      <a href="agentpepe-skill.md">Skill file</a>
+    </div>
+    <div class="foot-col">
+      <h4>Legal</h4>
+      <a href="about.html">About</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="disclaimer.html">Disclaimer</a>
+    </div>
+    <div class="foot-col">
+      <h4>Contracts</h4>
+      <p>AgentPepe NFT<br><a class="fc-link" href="https://bscscan.com/address/0xA34C9D34b2Ee93b8059d0ED5302ae595c446423d" target="_blank" rel="noopener"><code>0xA34C...423d</code></a></p>
+      <p>$APEPE token<br><a class="fc-link" href="https://bscscan.com/address/0x95805acAE9125Caf9E26Bb08ca272e6D9dBc3F9A" target="_blank" rel="noopener"><code>0x9580...5F9A</code></a></p>
+      <p>Claim contract<br><a class="fc-link" href="https://bscscan.com/address/0x49e6bD4C0c7728c947F899F5e21a7A1D3B6e8584" target="_blank" rel="noopener"><code>0x49e6...8584</code></a></p>
+    </div>
   </div>
-  <p class="footer-site">agentpepe.fun</p>
+  <p class="foot-base">© 2026 AGENTPEPE · agentpepe.fun · No wallet connects here, mint via your agent</p>
 </footer>
 
-<script src="js/app.js?v=4"></script>
+<script src="js/app.js?v=5"></script>
 <script src="js/fx.js?v=1"></script>
 </body>
 </html>

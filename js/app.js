@@ -17,6 +17,35 @@
     return addr ? addr.slice(0, 6) + "..." + addr.slice(-4) : "";
   }
 
+
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var tweens = {};
+  function setNum(el, to) {
+    if (!el) return;
+    if (reduceMotion) { el.textContent = to.toLocaleString("en-US"); return; }
+    var from = parseInt((el.textContent || "").replace(/[^0-9]/g, ""), 10);
+    if (isNaN(from)) from = 0;
+    var key = el.id || Math.random();
+    if (tweens[key]) cancelAnimationFrame(tweens[key]);
+    var t0 = null;
+    function step(ts) {
+      if (!t0) t0 = ts;
+      var p = Math.min(1, (ts - t0) / 650);
+      var e = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(from + (to - from) * e).toLocaleString("en-US");
+      if (p < 1) tweens[key] = requestAnimationFrame(step);
+    }
+    tweens[key] = requestAnimationFrame(step);
+  }
+  function setSnap(n) {
+    var next = (Math.floor(n / 500) + 1) * 500;
+    var num = Math.floor(n / 500) + 1;
+    var fill = $("snap-fill"), lab = $("snap-label"), cnt = $("snap-count");
+    if (fill) fill.style.width = Math.min(100, (n % 500) / 5) + "%";
+    if (lab) lab.textContent = "Snapshot Nº " + num + " at " + next.toLocaleString("en-US") + " mints";
+    if (cnt) cnt.textContent = n.toLocaleString("en-US") + " / " + next.toLocaleString("en-US");
+  }
+
   function fillContracts() {
     if (CONFIG.NFT) $("c-nft").textContent = CONFIG.NFT;
     if (CONFIG.TOKEN) $("c-token").textContent = CONFIG.TOKEN;
@@ -42,8 +71,8 @@
         var openRes = j.find(function (x) { return x.id === 2; });
         if (mintedRes && mintedRes.result) {
           var n = parseInt(mintedRes.result, 16);
-          if ($("b-minted")) $("b-minted").textContent = n.toLocaleString("en-US");
-          if ($("b-left")) $("b-left").textContent = (CONFIG.SUPPLY - n).toLocaleString("en-US");
+          setNum($("b-minted"), n); setSnap(n);
+          setNum($("b-left"), CONFIG.SUPPLY - n);
           var open = openRes && openRes.result && parseInt(openRes.result, 16) === 1;
           if (open) {
             if ($("b-status")) $("b-status").textContent = n >= CONFIG.SUPPLY ? "SOLD OUT" : "LIVE";
@@ -88,7 +117,7 @@
         if (!j || !Array.isArray(j)) continue;
         var cRes = j.find(function (x) { return x.id === 1; });
         var oRes = j.find(function (x) { return x.id === 2; });
-        if (cRes && cRes.result && $("cl-claimed")) $("cl-claimed").textContent = parseInt(cRes.result, 16).toLocaleString("en-US");
+        if (cRes && cRes.result) setNum($("cl-claimed"), parseInt(cRes.result, 16));
         if (oRes && oRes.result && $("cl-status")) $("cl-status").textContent = parseInt(oRes.result, 16) === 1 ? "OPEN" : "CLOSED";
         return;
       } catch (e) {}
@@ -99,4 +128,22 @@
   readClaim();
   setInterval(readMinted, 30000);
   setInterval(readClaim, 30000);
+})();
+
+/* reveal on scroll (v3) */
+(function () {
+  if (!("IntersectionObserver" in window)) return;
+  var els = document.querySelectorAll(".step, .fact, .strip-card, .prompt-box, .faq details, .section h2");
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: "0px 0px -4% 0px" });
+  els.forEach(function (el, i) {
+    el.classList.add("rv");
+    if (el.classList.contains("step") || el.classList.contains("fact")) {
+      el.style.transitionDelay = (i % 4) * 55 + "ms";
+    }
+    io.observe(el);
+  });
 })();
