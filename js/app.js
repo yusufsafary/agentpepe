@@ -52,18 +52,29 @@
     if (CONFIG.CLAIM) $("c-claim").textContent = CONFIG.CLAIM;
   }
 
-  function raceCalls(calls, onOk) {
-    var done = false;
+  function raceCalls(calls, onOk, onFail) {
+    var done = false, settled = 0;
     CONFIG.RPCS.forEach(function (url) {
+      var ctl = ("AbortController" in window) ? new AbortController() : null;
+      var timer = ctl ? setTimeout(function () { ctl.abort(); }, 4000) : null;
       fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(calls)
+        body: JSON.stringify(calls),
+        signal: ctl ? ctl.signal : undefined
       }).then(function (r) { return r.json(); }).then(function (j) {
-        if (done || !j || !Array.isArray(j)) return;
+        if (timer) clearTimeout(timer);
+        settled += 1;
+        if (done) return;
+        if (!j || !Array.isArray(j)) { if (settled >= CONFIG.RPCS.length && onFail) onFail(); return; }
         var first = j.find(function (x) { return x.id === 1; });
         if (first && first.result && first.result !== "0x") { done = true; onOk(j); }
-      }).catch(function () {});
+        else if (settled >= CONFIG.RPCS.length && onFail) onFail();
+      }).catch(function () {
+        if (timer) clearTimeout(timer);
+        settled += 1;
+        if (!done && settled >= CONFIG.RPCS.length && onFail) onFail();
+      });
     });
   }
 
@@ -87,7 +98,7 @@
         if ($("b-status")) $("b-status").textContent = "SOON";
         if ($("b-note")) $("b-note").textContent = "Mint is not open yet. Contracts are deployed. Watch this page and get your agent ready.";
       }
-    });
+    }, function () { setTimeout(readMinted, 5000); });
   }
 
   var cbtn2 = $("copy-btn-claim");
@@ -118,7 +129,7 @@
       var oRes = j.find(function (x) { return x.id === 2; });
       if (cRes && cRes.result) setNum($("cl-claimed"), parseInt(cRes.result, 16));
       if (oRes && oRes.result && $("cl-status")) $("cl-status").textContent = parseInt(oRes.result, 16) === 1 ? "OPEN" : "CLOSED";
-    });
+    }, function () { setTimeout(readClaim, 5000); });
   }
   fillContracts();
   readMinted();

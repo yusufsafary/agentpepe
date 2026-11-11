@@ -405,3 +405,7 @@ html { scroll-padding-top: 84px; }
 .sticker { z-index: 0; }
 .hero-text { position: relative; z-index: 1; }
 .hero-frog { z-index: 1; }
+
+/* v3.2: golden sticker moves over the frog photo, never over text */
+.sticker { pointer-events: none; }
+.sticker-golden { left: auto; right: 6px; bottom: 96px; }
