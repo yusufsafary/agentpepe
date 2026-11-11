@@ -431,3 +431,34 @@ html { scroll-padding-top: 84px; }
 .dex-btn { display: inline-block; background: var(--green); color: var(--ink); font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 19px; padding: 12px 22px; border: 3px solid var(--ink); border-radius: 999px; box-shadow: 4px 4px 0 var(--ink); text-decoration: none; transition: transform .15s ease, box-shadow .15s ease; }
 .dex-btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
 @media (max-width: 640px) { .dex-grid { grid-template-columns: 1fr; } }
+
+/* v3.4: market page (prepared, not linked publicly) */
+.mkt-hero { background: var(--green-dark); border: 3px solid var(--ink); border-radius: 28px; box-shadow: 8px 8px 0 var(--ink); padding: 40px 30px 34px; text-align: center; position: relative; overflow: hidden; }
+.mkt-hero .kick { font-family: "Space Mono", monospace; letter-spacing: 5px; font-size: 14px; color: var(--yellow); text-transform: uppercase; }
+.mkt-hero h1 { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: clamp(64px, 14vw, 128px); line-height: .92; margin: 10px 0 4px; color: var(--cream); }
+.mkt-hero h1 .l2 { color: var(--green-bright); display: block; }
+.mkt-hero p { color: var(--cream); opacity: .88; font-weight: 700; font-size: 19px; max-width: 560px; margin: 12px auto 0; }
+.mkt-stamp { display: inline-block; margin-top: 20px; background: var(--yellow); color: var(--ink); font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 22px; padding: 10px 22px; border: 3px solid var(--ink); border-radius: 14px; box-shadow: 4px 4px 0 var(--ink); transform: rotate(-2deg); }
+.mkt-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 22px 0 6px; }
+.mkt-stat { background: var(--white); border: 3px solid var(--ink); border-radius: 18px; box-shadow: 5px 5px 0 var(--ink); padding: 16px 10px; text-align: center; }
+.mkt-stat b { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 32px; display: block; line-height: 1; }
+.mkt-stat span { font-size: 12px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: #a86e00; }
+@media (max-width: 640px) { .mkt-stats { grid-template-columns: 1fr 1fr; } }
+.mkt-filters { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 24px 0 6px; }
+.mkt-chip { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 17px; padding: 8px 18px; border-radius: 999px; border: 3px solid var(--ink); background: var(--white); color: var(--ink); box-shadow: 3px 3px 0 var(--ink); }
+.mkt-chip.on { background: var(--ink); color: var(--cream); }
+.mkt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 22px; }
+@media (max-width: 900px) { .mkt-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .mkt-grid { grid-template-columns: 1fr; } }
+.mkt-card { background: var(--white); border: 3px solid var(--ink); border-radius: 22px; box-shadow: 6px 6px 0 var(--ink); overflow: hidden; position: relative; }
+.mkt-card .ph { height: 230px; overflow: hidden; border-bottom: 3px solid var(--ink); }
+.mkt-card .ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mkt-card .bd { padding: 16px 18px 18px; }
+.mkt-card .cls { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 24px; }
+.mkt-card .meta { display: flex; justify-content: space-between; align-items: center; margin-top: 6px; font-weight: 800; }
+.mkt-card .meta .pr { font-family: "Space Mono", monospace; font-size: 15px; opacity: .65; }
+.mkt-card .tag { font-size: 11.5px; font-weight: 900; letter-spacing: 1.5px; padding: 4px 10px; border-radius: 999px; border: 2.5px solid var(--ink); }
+.tag-chill { background: #bfeabf; } .tag-degen { background: #ffd93b; } .tag-golden { background: #f5b921; }
+.mkt-ribbon { position: absolute; top: 16px; right: -42px; transform: rotate(38deg); background: var(--yellow); color: var(--ink); font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 15px; letter-spacing: 2px; padding: 6px 52px; border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); z-index: 2; }
+.mkt-soon { text-align: center; margin: 30px auto 4px; max-width: 640px; }
+.mkt-soon h2 { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 34px; margin-bottom: 6px; }
