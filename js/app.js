@@ -52,39 +52,42 @@
     if (CONFIG.CLAIM) $("c-claim").textContent = CONFIG.CLAIM;
   }
 
-  async function readMinted() {
-    if (!CONFIG.NFT) return; // no contract set, board stays in soon mode
+  function raceCalls(calls, onOk) {
+    var done = false;
+    CONFIG.RPCS.forEach(function (url) {
+      fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(calls)
+      }).then(function (r) { return r.json(); }).then(function (j) {
+        if (done || !j || !Array.isArray(j)) return;
+        var first = j.find(function (x) { return x.id === 1; });
+        if (first && first.result && first.result !== "0x") { done = true; onOk(j); }
+      }).catch(function () {});
+    });
+  }
+
+  function readMinted() {
+    if (!CONFIG.NFT) return;
     var calls = [
-      { jsonrpc: "2.0", id: 1, method: "eth_call", params: [{ to: CONFIG.NFT, data: "0xa2309ff8" }, "latest"] }, // totalMinted()
-      { jsonrpc: "2.0", id: 2, method: "eth_call", params: [{ to: CONFIG.NFT, data: "0x24bbd049" }, "latest"] }  // mintOpen()
+      { jsonrpc: "2.0", id: 1, method: "eth_call", params: [{ to: CONFIG.NFT, data: "0xa2309ff8" }, "latest"] },
+      { jsonrpc: "2.0", id: 2, method: "eth_call", params: [{ to: CONFIG.NFT, data: "0x24bbd049" }, "latest"] }
     ];
-    for (var i = 0; i < CONFIG.RPCS.length; i++) {
-      try {
-        var r = await fetch(CONFIG.RPCS[i], {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(calls)
-        });
-        var j = await r.json();
-        if (!j || !Array.isArray(j)) continue;
-        var mintedRes = j.find(function (x) { return x.id === 1; });
-        var openRes = j.find(function (x) { return x.id === 2; });
-        if (mintedRes && mintedRes.result) {
-          var n = parseInt(mintedRes.result, 16);
-          setNum($("b-minted"), n); setSnap(n);
-          setNum($("b-left"), CONFIG.SUPPLY - n);
-          var open = openRes && openRes.result && parseInt(openRes.result, 16) === 1;
-          if (open) {
-            if ($("b-status")) $("b-status").textContent = n >= CONFIG.SUPPLY ? "SOLD OUT" : "LIVE";
-            if ($("b-note")) $("b-note").textContent = "Mint is live. Send your Binance agent the prompt below and grab your frog.";
-          } else {
-            if ($("b-status")) $("b-status").textContent = "SOON";
-            if ($("b-note")) $("b-note").textContent = "Mint is not open yet. Contracts are deployed. Watch this page and get your agent ready.";
-          }
-          return;
-        }
-      } catch (e) {}
-    }
+    raceCalls(calls, function (j) {
+      var mintedRes = j.find(function (x) { return x.id === 1; });
+      var openRes = j.find(function (x) { return x.id === 2; });
+      var n = parseInt(mintedRes.result, 16);
+      setNum($("b-minted"), n); setSnap(n);
+      setNum($("b-left"), CONFIG.SUPPLY - n);
+      var open = openRes && openRes.result && parseInt(openRes.result, 16) === 1;
+      if (open) {
+        if ($("b-status")) $("b-status").textContent = n >= CONFIG.SUPPLY ? "SOLD OUT" : "LIVE";
+        if ($("b-note")) $("b-note").textContent = "Mint is live. Send your Binance agent the prompt below and grab your frog.";
+      } else {
+        if ($("b-status")) $("b-status").textContent = "SOON";
+        if ($("b-note")) $("b-note").textContent = "Mint is not open yet. Contracts are deployed. Watch this page and get your agent ready.";
+      }
+    });
   }
 
   var cbtn2 = $("copy-btn-claim");
@@ -104,24 +107,18 @@
   });
 
 
-  async function readClaim() {
+  function readClaim() {
     if (!CONFIG.CLAIM) return;
     var calls = [
       { jsonrpc: "2.0", id: 1, method: "eth_call", params: [{ to: CONFIG.CLAIM, data: "0xd54ad2a1" }, "latest"] },
       { jsonrpc: "2.0", id: 2, method: "eth_call", params: [{ to: CONFIG.CLAIM, data: "0x4b8bcb58" }, "latest"] }
     ];
-    for (var i = 0; i < CONFIG.RPCS.length; i++) {
-      try {
-        var r = await fetch(CONFIG.RPCS[i], { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(calls) });
-        var j = await r.json();
-        if (!j || !Array.isArray(j)) continue;
-        var cRes = j.find(function (x) { return x.id === 1; });
-        var oRes = j.find(function (x) { return x.id === 2; });
-        if (cRes && cRes.result) setNum($("cl-claimed"), parseInt(cRes.result, 16));
-        if (oRes && oRes.result && $("cl-status")) $("cl-status").textContent = parseInt(oRes.result, 16) === 1 ? "OPEN" : "CLOSED";
-        return;
-      } catch (e) {}
-    }
+    raceCalls(calls, function (j) {
+      var cRes = j.find(function (x) { return x.id === 1; });
+      var oRes = j.find(function (x) { return x.id === 2; });
+      if (cRes && cRes.result) setNum($("cl-claimed"), parseInt(cRes.result, 16));
+      if (oRes && oRes.result && $("cl-status")) $("cl-status").textContent = parseInt(oRes.result, 16) === 1 ? "OPEN" : "CLOSED";
+    });
   }
   fillContracts();
   readMinted();
